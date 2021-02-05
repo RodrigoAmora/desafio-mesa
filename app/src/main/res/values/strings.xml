@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Desafio Mesa</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -13,4 +15,10 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string name="hint_login">Login</string>
+    <string name="hint_senha">Senha</string>
+
+    <string name="login">Login</string>
+    <string name="cadastrar">Cadastrar-se</string>
 </resources>
