@@ -2,9 +2,6 @@ package br.com.rodrigoamora.desario_mesa.util
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.content.Context.CONNECTIVITY_SERVICE
-import androidx.core.content.ContextCompat.getSystemService
-
 
 
 class NetworkUtil {
