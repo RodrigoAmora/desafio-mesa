@@ -48,7 +48,7 @@ class LoginPresenter(context: Context) : LoginContract.Presenter {
             tokenDao.saveAccessToken(context, token.token)
             view.goToMainActivity()
         } else {
-            view.showError(context.getString(R.string.error_signup))
+            view.showError(context.getString(R.string.error_login))
         }
 
         view.hideProgressBar()
