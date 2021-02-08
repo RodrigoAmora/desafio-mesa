@@ -1,6 +1,5 @@
-package br.com.rodrigoamora.desario_mesa.ui.login
+package br.com.rodrigoamora.desario_mesa.ui.signup
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -10,19 +9,17 @@ import br.com.rodrigoamora.desario_mesa.callback.SignupCallback
 import br.com.rodrigoamora.desario_mesa.model.Token
 import br.com.rodrigoamora.desario_mesa.model.Usuario
 import br.com.rodrigoamora.desario_mesa.service.LoginService
-import br.com.rodrigoamora.desario_mesa.ui.signup.SignupActivity
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_signup.*
 import retrofit2.Call
 import javax.inject.Inject
 
-
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
+class SignupActivity : AppCompatActivity(), View.OnClickListener {
 
     @Inject
     lateinit var service : LoginService
 
     lateinit var call : Call<Token>
-    lateinit var callback :SignupCallback
+    lateinit var callback : SignupCallback
 
     lateinit var name: String
     lateinit var email : String
@@ -30,25 +27,19 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_signup)
 
         getComponents()
 
         callback = SignupCallback()
 
-        val btLogin = bt_signin
+        val btLogin = bt_signup
         btLogin.setOnClickListener(this)
-
-        val lbSignup = lb_signup
-        lbSignup.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
-        if (view == bt_signin) {
-            login()
-        }
-        if (view == lb_signup) {
-            goToSignupActivity()
+        if (view == bt_signup) {
+            signup()
         }
     }
 
@@ -58,20 +49,16 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         component.inject(this)
     }
 
-    private fun login() {
+    private fun signup() {
         progress_bar.visibility = View.VISIBLE
-        name = ""
+        name = input_name.text.toString()
         email = input_email.text.toString()
         password = input_senha.text.toString()
 
         val usuario = Usuario(name, email, password)
 
-        call = service.signIn(usuario)
+        call = service.signUp(usuario)
         call.enqueue(callback)
-    }
-
-    private fun goToSignupActivity() {
-        startActivity(Intent(this, SignupActivity::class.java))
     }
 
 }
