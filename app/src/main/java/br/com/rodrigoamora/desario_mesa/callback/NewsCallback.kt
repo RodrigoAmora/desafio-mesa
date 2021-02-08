@@ -18,9 +18,8 @@ class NewsCallback (presenter: NewsPresenter) : Callback<ListaNews> {
     override fun onResponse(call: Call<ListaNews>, response: Response<ListaNews>) {
         if (response.isSuccessful()) {
             data = response.body()
-            presenter.populateRecyclerView()
         }
-
+        presenter.populateRecyclerView()
     }
 
 }

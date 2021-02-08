@@ -30,15 +30,12 @@ class NewsPresenter(context: Context) : NewsContract.Presenter {
         view.showProgressBar()
 
         val token = "Bearer "+TokenDao().getAccessToken(context)
-    /*
-        call = service.listNews(token)
-     */
-        var map = HashMap<String, String>()
-        map["Content-Type"] ="application/json"
-        map["Authorization"] = token
-//        map.put("Content-Type", "application/json")
-//        map.put("Authorization", token)
-        call = service.listNews(map)
+
+        var headers = HashMap<String, String>()
+        headers["Content-Type"] ="application/json"
+        headers["Authorization"] = token
+
+        call = service.listNews(headers)
         call.enqueue(callback)
     }
 
