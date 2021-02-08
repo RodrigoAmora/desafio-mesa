@@ -7,17 +7,20 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import br.com.rodrigoamora.desario_mesa.dao.TokenDao
 import br.com.rodrigoamora.desario_mesa.ui.login.LoginActivity
-import com.google.android.material.navigation.NavigationView
-import androidx.core.view.GravityCompat
-import android.view.View
+import br.com.rodrigoamora.desario_mesa.ui.news.NewsFragment
+import br.com.rodrigoamora.desario_mesa.util.FragmentUtil
 import br.com.rodrigoamora.desario_mesa.util.ShareUtil
+import com.google.android.material.navigation.NavigationView
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -28,6 +31,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
 
         createToolbarAndNavigationView()
+        changeFragment(NewsFragment(), null)
         //checkPermission()
     }
 
@@ -82,6 +86,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navigationView = findViewById(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
         navigationView.itemIconTintList = null
+    }
+
+    private fun changeFragment(fragment: Fragment, bundle: Bundle?) {
+        FragmentUtil.changeFragment(R.id.container, fragment, getSupportFragmentManager(), true, bundle);
     }
 
     private fun checkPermission(): Boolean {
