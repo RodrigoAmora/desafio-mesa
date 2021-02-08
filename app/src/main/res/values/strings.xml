@@ -28,7 +28,7 @@
     <string name="error_load_news">Não foi possível carregar as notícias</string>
     <string name="error_login">Falha no login</string>
     <string name="error_signup">Não foi posseivel realizar o cadastro</string>
-    <string name="error_sena_vazio">Senha vazia</string>
+    <string name="error_senha_vazia">Senha vazia</string>
 
     <string name="aguarde">Aguarde...</string>
     <string name="cadastrar">Cadastrar-se</string>

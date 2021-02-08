@@ -37,7 +37,7 @@ class SignupPresenter(context: Context) : SignupContract.Presenter {
             return
         }
         if (password.isEmpty()) {
-            view.showError(context.getString(R.string.error_sena_vazio))
+            view.showError(context.getString(R.string.error_senha_vazia))
             return
         }
 
