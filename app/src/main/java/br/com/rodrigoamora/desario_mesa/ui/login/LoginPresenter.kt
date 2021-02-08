@@ -3,7 +3,8 @@ package br.com.rodrigoamora.desario_mesa.ui.login
 import android.content.Context
 import br.com.rodrigoamora.desario_mesa.R
 import br.com.rodrigoamora.desario_mesa.application.MyApplication
-import br.com.rodrigoamora.desario_mesa.callback.SigninAndSignupCallback
+import br.com.rodrigoamora.desario_mesa.callback.LoginCallback
+import br.com.rodrigoamora.desario_mesa.dao.TokenDao
 import br.com.rodrigoamora.desario_mesa.model.Token
 import br.com.rodrigoamora.desario_mesa.model.Usuario
 import br.com.rodrigoamora.desario_mesa.service.LoginService
@@ -19,10 +20,10 @@ class LoginPresenter(context: Context) : LoginContract.Presenter {
     lateinit var call : Call<Token>
     val context: Context = context
 
-    var callback : SigninAndSignupCallback
+    var callback : LoginCallback
 
     init {
-        callback = SigninAndSignupCallback()
+        callback = LoginCallback(this)
         injectComponents()
     }
 
@@ -46,6 +47,19 @@ class LoginPresenter(context: Context) : LoginContract.Presenter {
 
             view.hideProgressBar()
         }
+    }
+
+    override fun goToMainActivity() {
+        if (callback.token != null) {
+            var tokenDao = TokenDao()
+            var token :Token = callback.token!!
+            tokenDao.saveAccessToken(context, token.token)
+            view.goToMainActivity()
+        } else {
+            view.showError(context.getString(R.string.error_signup))
+        }
+
+        view.hideProgressBar()
     }
 
     private fun injectComponents() {

@@ -13,6 +13,7 @@ interface LoginContract {
 
     interface Presenter {
         fun login(login: String, password: String)
+        fun goToMainActivity()
     }
 
 }
