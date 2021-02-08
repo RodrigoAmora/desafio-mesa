@@ -34,5 +34,7 @@
     <string name="cadastrando">Cadastrando</string>
     <string name="login">Login</string>
     <string name="logando">Logando</string>
+    <string name="share_title">Desafio Mesa</string>
+    <string name="share_text">Experimente o app Desafio Mesa!</string>
 
 </resources>
