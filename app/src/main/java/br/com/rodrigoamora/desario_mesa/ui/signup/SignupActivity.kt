@@ -1,37 +1,24 @@
 package br.com.rodrigoamora.desario_mesa.ui.signup
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import br.com.rodrigoamora.desario_mesa.MainActivity
 import br.com.rodrigoamora.desario_mesa.R
-import br.com.rodrigoamora.desario_mesa.application.MyApplication
-import br.com.rodrigoamora.desario_mesa.callback.SigninAndSignupCallback
-import br.com.rodrigoamora.desario_mesa.model.Token
-import br.com.rodrigoamora.desario_mesa.model.Usuario
-import br.com.rodrigoamora.desario_mesa.service.LoginService
 import kotlinx.android.synthetic.main.activity_signup.*
-import retrofit2.Call
-import javax.inject.Inject
 
-class SignupActivity : AppCompatActivity(), View.OnClickListener {
+class SignupActivity : AppCompatActivity(), View.OnClickListener, SignupContract.View {
 
-    @Inject
-    lateinit var service : LoginService
-
-    lateinit var call : Call<Token>
-    lateinit var callback : SigninAndSignupCallback
-
-    lateinit var name: String
-    lateinit var email : String
-    lateinit var password : String
+    lateinit var presenter : SignupPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        getComponents()
-
-        callback = SigninAndSignupCallback()
+        presenter = SignupPresenter(baseContext)
+        presenter.view = this
 
         val btLogin = bt_signup
         btLogin.setOnClickListener(this)
@@ -43,22 +30,28 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun getComponents() {
-        val myApplication = this.getApplication() as MyApplication
-        val component = myApplication.loginComponent
-        component.inject(this)
+    override fun showProgressBar() {
+        progress_bar.visibility = View.VISIBLE
     }
 
-    private fun signup() {
-        progress_bar.visibility = View.VISIBLE
-        name = input_name.text.toString()
-        email = input_email.text.toString()
-        password = input_senha.text.toString()
+    override fun hideProgressBar() {
+        progress_bar.visibility = View.GONE
+    }
 
-        val usuario = Usuario(name, email, password)
+    override fun showError(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
 
-        call = service.signUp(usuario)
-        call.enqueue(callback)
+    override fun goToMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
+    override fun signup() {
+        presenter.signup(
+            input_name.text.toString(),
+            input_email.text.toString(),
+            input_senha.text.toString()
+        )
     }
 
 }

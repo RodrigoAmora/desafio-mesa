@@ -22,8 +22,11 @@
     <string name="hint_senha">Senha</string>
 
     <string name="error_email_ou_senha_empty">E-mail ou Senha vazio</string>
+    <string name="error_email_vazio">E-mail vazio</string>
     <string name="error_nome_vazio">Nome vazio</string>
     <string name="error_login">Falha no login</string>
+    <string name="error_signup">Não foi posseivel realizar o cadastro</string>
+    <string name="error_sena_vazio">Senha vazia</string>
 
     <string name="aguarde">Aguarde...</string>
     <string name="cadastrar">Cadastrar-se</string>
