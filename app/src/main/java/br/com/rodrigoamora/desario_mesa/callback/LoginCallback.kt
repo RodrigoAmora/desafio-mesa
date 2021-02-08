@@ -3,7 +3,6 @@ package br.com.rodrigoamora.desario_mesa.callback
 import android.util.Log
 import br.com.rodrigoamora.desario_mesa.model.Token
 import br.com.rodrigoamora.desario_mesa.ui.login.LoginPresenter
-import br.com.rodrigoamora.desario_mesa.ui.signup.SignupPresenter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
