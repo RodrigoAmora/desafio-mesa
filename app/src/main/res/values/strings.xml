@@ -21,6 +21,9 @@
     <string name="hint_nome">Nome</string>
     <string name="hint_senha">Senha</string>
 
+    <string name="error_email_ou_senha_empty">E-mail ou Senha vazio!</string>
+    <string name="error_login">Falha no login</string>
+
     <string name="aguarde">Aguarde...</string>
     <string name="cadastrar">Cadastrar-se</string>
     <string name="cadastrando">Cadastrando</string>
