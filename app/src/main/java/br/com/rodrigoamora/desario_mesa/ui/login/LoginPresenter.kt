@@ -38,14 +38,6 @@ class LoginPresenter(context: Context) : LoginContract.Presenter {
 
             call = service.signIn(usuario)
             call.enqueue(callback)
-
-            if (callback.token != null) {
-                view.goToMainActivity()
-            } else {
-                view.showError(context.getString(R.string.error_login))
-            }
-
-            view.hideProgressBar()
         }
     }
 
