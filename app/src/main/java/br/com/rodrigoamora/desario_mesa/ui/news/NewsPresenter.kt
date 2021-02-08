@@ -7,6 +7,7 @@ import br.com.rodrigoamora.desario_mesa.callback.NewsCallback
 import br.com.rodrigoamora.desario_mesa.callback.model.ListaNews
 import br.com.rodrigoamora.desario_mesa.dao.TokenDao
 import br.com.rodrigoamora.desario_mesa.service.NewsService
+import br.com.rodrigoamora.desario_mesa.util.NetworkUtil
 import retrofit2.Call
 import javax.inject.Inject
 
@@ -27,16 +28,20 @@ class NewsPresenter(context: Context) : NewsContract.Presenter {
     }
 
     override fun searchNews() {
-        view.showProgressBar()
+        if (NetworkUtil.checkConnection(context)) {
+            view.showProgressBar()
 
-        val token = "Bearer "+TokenDao().getAccessToken(context)
+            val token = "Bearer " + TokenDao().getAccessToken(context)
 
-        var headers = HashMap<String, String>()
-        headers["Content-Type"] ="application/json"
-        headers["Authorization"] = token
+            var headers = HashMap<String, String>()
+            headers["Content-Type"] = "application/json"
+            headers["Authorization"] = token
 
-        call = service.listNews(headers)
-        call.enqueue(callback)
+            call = service.listNews(headers)
+            call.enqueue(callback)
+        } else {
+            view.showError(context.getString(R.string.error_sem_internet))
+        }
     }
 
     override fun showError() {

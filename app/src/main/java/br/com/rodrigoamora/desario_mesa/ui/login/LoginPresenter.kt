@@ -8,6 +8,7 @@ import br.com.rodrigoamora.desario_mesa.dao.TokenDao
 import br.com.rodrigoamora.desario_mesa.model.Token
 import br.com.rodrigoamora.desario_mesa.model.Usuario
 import br.com.rodrigoamora.desario_mesa.service.LoginService
+import br.com.rodrigoamora.desario_mesa.util.NetworkUtil
 import retrofit2.Call
 import javax.inject.Inject
 
@@ -30,7 +31,10 @@ class LoginPresenter(context: Context) : LoginContract.Presenter {
     override fun login(email: String, password: String) {
         if (email.isEmpty() && password.isEmpty()) {
             view.showError(context.getString(R.string.error_email_ou_senha_empty))
-        } else {
+            return
+        }
+
+        if (NetworkUtil.checkConnection(context)) {
             view.showProgressBar()
 
             val name = ""
@@ -38,6 +42,8 @@ class LoginPresenter(context: Context) : LoginContract.Presenter {
 
             call = service.signIn(usuario)
             call.enqueue(callback)
+        }  else {
+            view.showError(context.getString(R.string.error_sem_internet))
         }
     }
 

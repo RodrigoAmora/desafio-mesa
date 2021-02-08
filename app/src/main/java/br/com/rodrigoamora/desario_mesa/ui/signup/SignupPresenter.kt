@@ -8,6 +8,7 @@ import br.com.rodrigoamora.desario_mesa.dao.TokenDao
 import br.com.rodrigoamora.desario_mesa.model.Token
 import br.com.rodrigoamora.desario_mesa.model.Usuario
 import br.com.rodrigoamora.desario_mesa.service.LoginService
+import br.com.rodrigoamora.desario_mesa.util.NetworkUtil
 import retrofit2.Call
 import javax.inject.Inject
 
@@ -41,12 +42,16 @@ class SignupPresenter(context: Context) : SignupContract.Presenter {
             return
         }
 
-        view.showProgressBar()
+        if (NetworkUtil.checkConnection(context)) {
+            view.showProgressBar()
 
-        val usuario = Usuario(name, email, password)
+            val usuario = Usuario(name, email, password)
 
-        call = service.signUp(usuario)
-        call.enqueue(callback)
+            call = service.signUp(usuario)
+            call.enqueue(callback)
+        }  else {
+            view.showError(context.getString(R.string.error_sem_internet))
+        }
     }
 
     override fun goToMainActivity() {
