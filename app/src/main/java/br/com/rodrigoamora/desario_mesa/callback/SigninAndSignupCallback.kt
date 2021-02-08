@@ -6,7 +6,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SignupCallback : Callback<Token> {
+class SigninAndSignupCallback : Callback<Token> {
 
     var token: Token? = null
 

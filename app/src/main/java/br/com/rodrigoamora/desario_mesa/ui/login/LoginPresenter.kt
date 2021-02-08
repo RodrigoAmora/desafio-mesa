@@ -3,7 +3,7 @@ package br.com.rodrigoamora.desario_mesa.ui.login
 import android.content.Context
 import br.com.rodrigoamora.desario_mesa.R
 import br.com.rodrigoamora.desario_mesa.application.MyApplication
-import br.com.rodrigoamora.desario_mesa.callback.SignupCallback
+import br.com.rodrigoamora.desario_mesa.callback.SigninAndSignupCallback
 import br.com.rodrigoamora.desario_mesa.model.Token
 import br.com.rodrigoamora.desario_mesa.model.Usuario
 import br.com.rodrigoamora.desario_mesa.service.LoginService
@@ -19,10 +19,10 @@ class LoginPresenter(context: Context) : LoginContract.Presenter {
     lateinit var call : Call<Token>
     val context: Context = context
 
-    var callback : SignupCallback
+    var callback : SigninAndSignupCallback
 
     init {
-        callback = SignupCallback()
+        callback = SigninAndSignupCallback()
         injectComponents()
     }
 

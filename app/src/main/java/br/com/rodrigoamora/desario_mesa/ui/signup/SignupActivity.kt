@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import br.com.rodrigoamora.desario_mesa.R
 import br.com.rodrigoamora.desario_mesa.application.MyApplication
-import br.com.rodrigoamora.desario_mesa.callback.SignupCallback
+import br.com.rodrigoamora.desario_mesa.callback.SigninAndSignupCallback
 import br.com.rodrigoamora.desario_mesa.model.Token
 import br.com.rodrigoamora.desario_mesa.model.Usuario
 import br.com.rodrigoamora.desario_mesa.service.LoginService
@@ -19,7 +19,7 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var service : LoginService
 
     lateinit var call : Call<Token>
-    lateinit var callback : SignupCallback
+    lateinit var callback : SigninAndSignupCallback
 
     lateinit var name: String
     lateinit var email : String
@@ -31,7 +31,7 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
 
         getComponents()
 
-        callback = SignupCallback()
+        callback = SigninAndSignupCallback()
 
         val btLogin = bt_signup
         btLogin.setOnClickListener(this)
