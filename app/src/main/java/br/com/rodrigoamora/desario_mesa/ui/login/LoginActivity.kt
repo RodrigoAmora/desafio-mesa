@@ -23,6 +23,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContract.V
         inflateLayoutComponents()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+        moveTaskToBack(true)
+    }
+
     override fun onClick(view: View?) {
         if (view == bt_signin) {
             login()

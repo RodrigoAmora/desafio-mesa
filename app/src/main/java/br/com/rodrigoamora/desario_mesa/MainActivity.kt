@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -14,7 +13,6 @@ import androidx.fragment.app.Fragment
 import br.com.rodrigoamora.desario_mesa.dao.TokenDao
 import br.com.rodrigoamora.desario_mesa.ui.login.LoginActivity
 import br.com.rodrigoamora.desario_mesa.ui.news.NewsFragment
-import br.com.rodrigoamora.desario_mesa.ui.news.details.DetailsNewsFragment
 import br.com.rodrigoamora.desario_mesa.util.FragmentUtil
 import br.com.rodrigoamora.desario_mesa.util.ShareUtil
 import com.google.android.material.navigation.NavigationView
@@ -22,13 +20,29 @@ import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    lateinit var drawer: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
 
         createToolbarAndNavigationView()
-        changeFragment(NewsFragment(), null)
+        changeFragment(NewsFragment(), null, false)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START)
+        } else {
+            val count = supportFragmentManager.backStackEntryCount
+            if (count == 0) {
+                finish()
+                moveTaskToBack(true)
+            } else {
+                supportFragmentManager.popBackStack()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -50,7 +64,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.nav_news) {
-            changeFragment(DetailsNewsFragment(), null)
+            changeFragment(NewsFragment(), null, true)
         }
         if (item.itemId == R.id.nav_share) {
             ShareUtil.directShare(this,
@@ -58,7 +72,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                     getString(R.string.share_text))
         }
 
-        val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         drawer.closeDrawer(GravityCompat.START)
 
         return true
@@ -68,7 +81,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
+        drawer = findViewById(R.id.drawer_layout) as DrawerLayout
+
         val toggle = ActionBarDrawerToggle(
             this,
                     drawer, toolbar,
@@ -84,8 +98,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView.itemIconTintList = null
     }
 
-    private fun changeFragment(fragment: Fragment, bundle: Bundle?) {
-        FragmentUtil.changeFragment(R.id.container, fragment, getSupportFragmentManager(), true, bundle);
+    private fun changeFragment(fragment: Fragment, bundle: Bundle?, backstack: Boolean) {
+        FragmentUtil.changeFragment(R.id.container, fragment, getSupportFragmentManager(), backstack, bundle);
     }
 
 }
