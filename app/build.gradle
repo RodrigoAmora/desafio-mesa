@@ -72,6 +72,9 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
+    //EVENT BUS
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
     //RETROFIT
     def retrofitVersion = '2.7.2'
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
