@@ -64,8 +64,6 @@ dependencies {
 
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0-RC")
-
     //DAGGER
     def daggerVersion = '2.24'
     implementation "com.google.dagger:dagger:$daggerVersion"
@@ -73,7 +71,8 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
     //EVENT BUS
-    implementation 'org.greenrobot:eventbus:3.2.0'
+    def eventBusVersion = '3.2.0'
+    implementation "org.greenrobot:eventbus:$eventBusVersion"
 
     //RETROFIT
     def retrofitVersion = '2.7.2'
