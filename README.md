@@ -4,9 +4,13 @@ O app roda a partir do Android 6.0 (API Level 23).<br><br>
 
 <hr>
 O projeto usa como dependências as seguintes bibliotecas e frameworks:
+
 * Material Design
+
 * Constraint Layout
+
 * Retrofit
+
 * Dagger
 
 <hr>
