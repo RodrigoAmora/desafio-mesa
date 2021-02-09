@@ -19,24 +19,24 @@
     <string name="menu_send">Send</string>
 
     <string name="hint_email">E-mail</string>
-    <string name="hint_nome">Nome</string>
-    <string name="hint_senha">Senha</string>
+    <string name="hint_name">Nome</string>
+    <string name="hint_password">Senha</string>
 
-    <string name="error_email_ou_senha_empty">E-mail ou Senha vazio</string>
-    <string name="error_email_vazio">E-mail vazio</string>
-    <string name="error_nome_vazio">Nome vazio</string>
+    <string name="error_email_or_password_empty">E-mail ou Senha vazio</string>
+    <string name="error_email_empty">E-mail vazio</string>
+    <string name="error_name_empty">Nome vazio</string>
     <string name="error_load_news">Não foi possível carregar as notícias</string>
     <string name="error_login">Falha no login</string>
     <string name="error_signup">Não foi posseivel realizar o cadastro</string>
-    <string name="error_sem_internet">Sem internet</string>
-    <string name="error_senha_vazia">Senha vazia</string>
+    <string name="error_no_internet">Sem internet</string>
+    <string name="error_password_empty">Senha vazia</string>
 
-    <string name="aguarde">Aguarde...</string>
-    <string name="cadastrar">Cadastrar-se</string>
-    <string name="cadastrando">Cadastrando</string>
+    <string name="signing_up">Cadastrando</string>
     <string name="login">Login</string>
-    <string name="logando">Logando</string>
+    <string name="register">Cadastrar-se</string>
+    <string name="signing_in">Logando</string>
     <string name="share_title">Desafio Mesa</string>
     <string name="share_text">Experimente o app Desafio Mesa!</string>
+    <string name="wait">Aguarde...</string>
 
 </resources>

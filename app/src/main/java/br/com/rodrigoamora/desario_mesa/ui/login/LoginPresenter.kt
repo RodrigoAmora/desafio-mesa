@@ -30,7 +30,7 @@ class LoginPresenter(context: Context) : LoginContract.Presenter {
 
     override fun login(email: String, password: String) {
         if (email.isEmpty() && password.isEmpty()) {
-            view.showError(context.getString(R.string.error_email_ou_senha_empty))
+            view.showError(context.getString(R.string.error_email_or_password_empty))
             return
         }
 
@@ -43,7 +43,7 @@ class LoginPresenter(context: Context) : LoginContract.Presenter {
             call = service.signIn(usuario)
             call.enqueue(callback)
         }  else {
-            view.showError(context.getString(R.string.error_sem_internet))
+            view.showError(context.getString(R.string.error_no_internet))
         }
     }
 

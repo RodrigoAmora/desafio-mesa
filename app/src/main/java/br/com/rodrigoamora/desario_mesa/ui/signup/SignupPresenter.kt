@@ -30,15 +30,15 @@ class SignupPresenter(context: Context) : SignupContract.Presenter {
 
     override fun signup(name: String, email: String, password: String) {
         if (name.isEmpty()) {
-            view.showError(context.getString(R.string.error_nome_vazio))
+            view.showError(context.getString(R.string.error_name_empty))
             return
         }
         if (email.isEmpty()) {
-            view.showError(context.getString(R.string.error_email_vazio))
+            view.showError(context.getString(R.string.error_email_empty))
             return
         }
         if (password.isEmpty()) {
-            view.showError(context.getString(R.string.error_senha_vazia))
+            view.showError(context.getString(R.string.error_password_empty))
             return
         }
 
@@ -50,7 +50,7 @@ class SignupPresenter(context: Context) : SignupContract.Presenter {
             call = service.signUp(usuario)
             call.enqueue(callback)
         }  else {
-            view.showError(context.getString(R.string.error_sem_internet))
+            view.showError(context.getString(R.string.error_no_internet))
         }
     }
 

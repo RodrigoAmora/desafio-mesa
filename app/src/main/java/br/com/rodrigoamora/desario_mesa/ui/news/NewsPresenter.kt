@@ -40,7 +40,7 @@ class NewsPresenter(context: Context) : NewsContract.Presenter {
             call = service.listNews(headers)
             call.enqueue(callback)
         } else {
-            view.showError(context.getString(R.string.error_sem_internet))
+            view.showError(context.getString(R.string.error_no_internet))
         }
     }
 

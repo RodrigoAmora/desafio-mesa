@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigoamora.desario_mesa.R
 import br.com.rodrigoamora.desario_mesa.model.News
 import br.com.rodrigoamora.desario_mesa.ui.news.adapter.NewsAdapter
+import br.com.rodrigoamora.desario_mesa.ui.news.listener.OnItemListClickListener
+import br.com.rodrigoamora.desario_mesa.util.FragmentUtil
 import kotlinx.android.synthetic.main.fragment_news.*
 
 
@@ -60,6 +62,21 @@ class NewsFragment : Fragment(), NewsContract.View {
     override fun populateRecyclerView(newsList: List<News>?) {
         val adapter = NewsAdapter(activity!!.applicationContext, newsList)
         recyclerView.adapter = adapter
+
+        adapter.itemClickListener(object : OnItemListClickListener<News> {
+            override fun onItemClick(news: News) {
+                val bundle = Bundle()
+                bundle.putSerializable("news", news)
+
+                FragmentUtil.changeFragment(
+                    R.id.container,
+                    NewsFragment(),
+                    activity?.supportFragmentManager!!,
+                    true,
+                    bundle
+                )
+            }
+        })
     }
 
     private fun configureRecyclerView() {
@@ -72,6 +89,5 @@ class NewsFragment : Fragment(), NewsContract.View {
         recyclerView.setLayoutManager(linearLayout)
         recyclerView.setNestedScrollingEnabled(false)
     }
-
 
 }
