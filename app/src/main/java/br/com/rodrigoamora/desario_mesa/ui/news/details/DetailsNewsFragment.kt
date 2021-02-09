@@ -23,6 +23,10 @@ class DetailsNewsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        openURL()
+    }
+
+    private fun openURL() {
         val news: News = arguments?.get("news") as News
 
         val webView = web_view
