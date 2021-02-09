@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigoamora.desario_mesa.R
 import br.com.rodrigoamora.desario_mesa.model.News
 import br.com.rodrigoamora.desario_mesa.ui.news.adapter.NewsAdapter
+import br.com.rodrigoamora.desario_mesa.ui.news.details.DetailsNewsFragment
 import br.com.rodrigoamora.desario_mesa.ui.news.listener.OnItemListClickListener
 import br.com.rodrigoamora.desario_mesa.util.FragmentUtil
 import kotlinx.android.synthetic.main.fragment_news.*
@@ -24,6 +25,15 @@ class NewsFragment : Fragment(), NewsContract.View {
 
     lateinit var recyclerView : RecyclerView
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val root = inflater.inflate(R.layout.fragment_news, container, false)
+        return root
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -32,15 +42,6 @@ class NewsFragment : Fragment(), NewsContract.View {
 
         configureRecyclerView()
         searchNews()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_news, container, false)
-        return root
     }
 
     override fun showProgressBar() {
@@ -70,7 +71,7 @@ class NewsFragment : Fragment(), NewsContract.View {
 
                 FragmentUtil.changeFragment(
                     R.id.container,
-                    NewsFragment(),
+                    DetailsNewsFragment(),
                     activity?.supportFragmentManager!!,
                     true,
                     bundle

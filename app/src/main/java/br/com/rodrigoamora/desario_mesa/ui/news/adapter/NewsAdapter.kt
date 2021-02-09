@@ -22,11 +22,11 @@ class NewsAdapter(context: Context, newsList: List<News>?) : RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         holder.setValues(newsList!!.get(position))
-        holder.itemView.lb_description.setOnClickListener { object : View.OnClickListener {
+        holder.itemView.lb_title.setOnClickListener ( object : View.OnClickListener {
             override fun onClick(v: View) {
                 listener?.onItemClick(newsList?.get(position)!!)
             }
-        }}
+        })
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
