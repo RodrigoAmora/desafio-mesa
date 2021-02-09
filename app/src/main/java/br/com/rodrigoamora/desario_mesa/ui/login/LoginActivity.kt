@@ -19,14 +19,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContract.V
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        presenter = LoginPresenter(baseContext)
-        presenter.view = this
-
-        val btLogin = bt_signin
-        btLogin.setOnClickListener(this)
-
-        val lbSignup = lb_signup
-        lbSignup.setOnClickListener(this)
+        instantiatePresenter()
+        inflateLayoutComponents()
     }
 
     override fun onClick(view: View?) {
@@ -59,7 +53,20 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContract.V
     }
 
     override fun login() {
-        presenter.login(input_email.text.toString(), input_senha.text.toString())
+        presenter.login(input_email.text.toString(), input_password.text.toString())
+    }
+
+    private fun instantiatePresenter() {
+        presenter = LoginPresenter(baseContext)
+        presenter.view = this
+    }
+
+    private fun inflateLayoutComponents() {
+        val btLogin = bt_signin
+        btLogin.setOnClickListener(this)
+
+        val lbSignup = lb_signup
+        lbSignup.setOnClickListener(this)
     }
 
 }

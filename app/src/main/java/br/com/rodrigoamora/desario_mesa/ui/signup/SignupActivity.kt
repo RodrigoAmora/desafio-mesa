@@ -17,11 +17,9 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener, SignupContract
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        presenter = SignupPresenter(baseContext)
-        presenter.view = this
+        instantiatePresenter()
+        inflateLayoutComponents()
 
-        val btLogin = bt_signup
-        btLogin.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -50,8 +48,18 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener, SignupContract
         presenter.signup(
             input_name.text.toString(),
             input_email.text.toString(),
-            input_senha.text.toString()
+            input_password.text.toString()
         )
+    }
+
+    private fun instantiatePresenter() {
+        presenter = SignupPresenter(baseContext)
+        presenter.view = this
+    }
+
+    private fun inflateLayoutComponents() {
+        val btLogin = bt_signup
+        btLogin.setOnClickListener(this)
     }
 
 }
