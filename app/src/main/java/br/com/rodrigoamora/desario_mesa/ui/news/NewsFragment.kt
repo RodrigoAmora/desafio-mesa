@@ -22,7 +22,6 @@ import kotlinx.android.synthetic.main.fragment_news.*
 class NewsFragment : Fragment(), NewsContract.View {
 
     lateinit var presenter : NewsPresenter
-
     lateinit var recyclerView : RecyclerView
 
     override fun onCreateView(
@@ -37,10 +36,8 @@ class NewsFragment : Fragment(), NewsContract.View {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        presenter = NewsPresenter(activity!!.baseContext)
-        presenter.view = this
-
         configureRecyclerView()
+        instantiatePresenter()
         searchNews()
     }
 
@@ -89,6 +86,11 @@ class NewsFragment : Fragment(), NewsContract.View {
         recyclerView.setItemAnimator(DefaultItemAnimator())
         recyclerView.setLayoutManager(linearLayout)
         recyclerView.setNestedScrollingEnabled(false)
+    }
+
+    private fun instantiatePresenter() {
+        presenter = NewsPresenter(activity!!.baseContext)
+        presenter.view = this
     }
 
 }
