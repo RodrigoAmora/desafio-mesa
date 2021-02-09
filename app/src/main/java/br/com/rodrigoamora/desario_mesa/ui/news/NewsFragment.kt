@@ -1,6 +1,7 @@
 package br.com.rodrigoamora.desario_mesa.ui.news
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,12 +18,17 @@ import br.com.rodrigoamora.desario_mesa.ui.news.details.DetailsNewsFragment
 import br.com.rodrigoamora.desario_mesa.ui.news.listener.OnItemListClickListener
 import br.com.rodrigoamora.desario_mesa.util.FragmentUtil
 import kotlinx.android.synthetic.main.fragment_news.*
+import java.util.*
 
 
 class NewsFragment : Fragment(), NewsContract.View {
 
     lateinit var presenter : NewsPresenter
     lateinit var recyclerView : RecyclerView
+
+    lateinit var timer: Timer
+    lateinit var timerTask: TimerTask
+    lateinit var handler: Handler
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +44,12 @@ class NewsFragment : Fragment(), NewsContract.View {
 
         configureRecyclerView()
         instantiatePresenter()
-        searchNews()
+        initializeTimerTask()
+    }
+
+    override fun onStop() {
+        timer.cancel()
+        super.onStop()
     }
 
     override fun showProgressBar() {
@@ -97,4 +108,19 @@ class NewsFragment : Fragment(), NewsContract.View {
         )
     }
 
+    fun initializeTimerTask() {
+        handler = Handler()
+        timer = Timer()
+
+        timerTask = object : TimerTask(){
+            override fun run() {
+                //use a handler to run a toast that shows the current timestamp
+                handler.post(Runnable {
+                    searchNews()
+                })
+            }
+        }
+
+        timer.schedule(timerTask, 1000, 3000)
+    }
 }
