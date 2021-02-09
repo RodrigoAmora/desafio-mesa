@@ -63,16 +63,7 @@ class NewsFragment : Fragment(), NewsContract.View {
 
         adapter.itemClickListener(object : OnItemListClickListener<News> {
             override fun onItemClick(news: News) {
-                val bundle = Bundle()
-                bundle.putSerializable("news", news)
-
-                FragmentUtil.changeFragment(
-                    R.id.container,
-                    DetailsNewsFragment(),
-                    activity?.supportFragmentManager!!,
-                    true,
-                    bundle
-                )
+                goToDetailsNewsFragment(news)
             }
         })
     }
@@ -91,6 +82,19 @@ class NewsFragment : Fragment(), NewsContract.View {
     private fun instantiatePresenter() {
         presenter = NewsPresenter(activity!!.baseContext)
         presenter.view = this
+    }
+
+    private fun goToDetailsNewsFragment(news: News) {
+        val bundle = Bundle()
+        bundle.putSerializable("news", news)
+
+        FragmentUtil.changeFragment(
+            R.id.container,
+            DetailsNewsFragment(),
+            activity?.supportFragmentManager!!,
+            true,
+            bundle
+        )
     }
 
 }
