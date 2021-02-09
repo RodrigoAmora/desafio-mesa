@@ -8,9 +8,9 @@
 
     <WebView
         android:id="@+id/web_view"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_end"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
