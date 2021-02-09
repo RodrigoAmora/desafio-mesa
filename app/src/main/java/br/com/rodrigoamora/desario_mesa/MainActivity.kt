@@ -1,9 +1,6 @@
 package br.com.rodrigoamora.desario_mesa
 
-import android.Manifest.permission.ACCESS_COARSE_LOCATION
-import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,13 +8,13 @@ import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import br.com.rodrigoamora.desario_mesa.dao.TokenDao
 import br.com.rodrigoamora.desario_mesa.ui.login.LoginActivity
 import br.com.rodrigoamora.desario_mesa.ui.news.NewsFragment
+import br.com.rodrigoamora.desario_mesa.ui.news.details.DetailsNewsFragment
 import br.com.rodrigoamora.desario_mesa.util.FragmentUtil
 import br.com.rodrigoamora.desario_mesa.util.ShareUtil
 import com.google.android.material.navigation.NavigationView
@@ -32,7 +29,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         createToolbarAndNavigationView()
         changeFragment(NewsFragment(), null)
-        //checkPermission()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -54,7 +50,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.nav_news) {
-
+            changeFragment(DetailsNewsFragment(), null)
         }
         if (item.itemId == R.id.nav_share) {
             ShareUtil.directShare(this,
@@ -92,14 +88,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         FragmentUtil.changeFragment(R.id.container, fragment, getSupportFragmentManager(), true, bundle);
     }
 
-    private fun checkPermission(): Boolean {
-        val resultAccessFineLocation =
-            ContextCompat.checkSelfPermission(applicationContext, ACCESS_FINE_LOCATION)
-
-        val resultAccessCoarseLocation =
-            ContextCompat.checkSelfPermission(applicationContext, ACCESS_COARSE_LOCATION)
-
-        return resultAccessFineLocation == PackageManager.PERMISSION_GRANTED &&
-                resultAccessCoarseLocation == PackageManager.PERMISSION_GRANTED
-    }
 }
