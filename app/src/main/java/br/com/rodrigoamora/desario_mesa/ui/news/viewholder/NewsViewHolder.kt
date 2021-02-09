@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.adapter_news.view.*
 class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun setValues(news : News) {
-        itemView.lb_titulo.text = news.title
+        itemView.lb_title.text = news.title
     }
 
 }
