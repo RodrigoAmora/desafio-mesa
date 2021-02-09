@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.com.rodrigoamora.desario_mesa.R
+import br.com.rodrigoamora.desario_mesa.model.News
 import kotlinx.android.synthetic.main.fragment_details_news.*
 
 class DetailsNewsFragment : Fragment() {
@@ -22,6 +23,10 @@ class DetailsNewsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        val news: News = arguments?.get("news") as News
+
+        val webView = web_view
+        webView.loadUrl(news.url)
     }
 
 }
