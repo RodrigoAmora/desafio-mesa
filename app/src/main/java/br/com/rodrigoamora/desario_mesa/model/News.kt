@@ -1,7 +1,7 @@
 package br.com.rodrigoamora.desario_mesa.model
 
 import com.google.gson.annotations.SerializedName
-import java.util.Date
+import java.io.Serializable
 
 data class News(
 
@@ -29,4 +29,4 @@ data class News(
     @SerializedName("image_url")
     var image_url : String
 
-)
+): Serializable
