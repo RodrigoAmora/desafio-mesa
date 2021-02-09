@@ -18,7 +18,8 @@ import br.com.rodrigoamora.desario_mesa.ui.news.details.DetailsNewsFragment
 import br.com.rodrigoamora.desario_mesa.ui.news.listener.OnItemListClickListener
 import br.com.rodrigoamora.desario_mesa.util.FragmentUtil
 import kotlinx.android.synthetic.main.fragment_news.*
-import java.util.*
+import java.util.Timer
+import java.util.TimerTask
 
 
 class NewsFragment : Fragment(), NewsContract.View {
@@ -123,4 +124,5 @@ class NewsFragment : Fragment(), NewsContract.View {
 
         timer.schedule(timerTask, 1000, 3000)
     }
+
 }
