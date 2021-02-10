@@ -5,18 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/lb_title"
-        android:lines="3"
+    <ImageView
+        android:id="@+id/iv_photo_news"
+        android:src="@mipmap/ic_launcher"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="110dp" />
+
+    <TextView
+        android:id="@+id/lb_title"
+        android:lines="2"
         android:onClick="onClick"
         android:clickable="true"
+        android:text="@string/app_name"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_end"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_photo_news"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lb_description"
+        android:lines="2"
+        android:text="@string/app_name"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lb_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
