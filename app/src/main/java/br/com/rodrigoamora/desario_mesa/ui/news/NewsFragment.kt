@@ -42,8 +42,7 @@ class NewsFragment : Fragment(), NewsContract.View {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        configureRecyclerView()
+        configureRecyclerViewOfNews()
         instantiatePresenter()
         initializeTimerTask()
     }
@@ -80,7 +79,7 @@ class NewsFragment : Fragment(), NewsContract.View {
         })
     }
 
-    private fun configureRecyclerView() {
+    private fun configureRecyclerViewOfNews() {
         val linearLayout = LinearLayoutManager(activity)
         val dividerItemDecoration = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
         recyclerView = list_news
@@ -122,7 +121,7 @@ class NewsFragment : Fragment(), NewsContract.View {
             }
         }
 
-        timer.schedule(timerTask, 1000, 3000)
+        timer.schedule(timerTask, 1000, 30000)
     }
 
 }
