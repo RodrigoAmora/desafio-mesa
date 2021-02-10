@@ -70,6 +70,9 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
+    //PICASSO
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     //RETROFIT
     def retrofitVersion = '2.7.2'
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
