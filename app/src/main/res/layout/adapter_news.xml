@@ -58,7 +58,7 @@
 
     <ImageView
         android:id="@+id/iv_star"
-        android:src="@drawable/ic_star_yellow"
+        android:src="@drawable/ic_star_black"
         android:layout_marginTop="@dimen/margin_top_adapter"
         android:layout_marginStart="5dp"
         app:layout_constraintStart_toEndOf="@id/iv_share"
