@@ -24,10 +24,12 @@
     <string name="error_no_internet">Sem internet</string>
     <string name="error_password_empty">Senha vazia</string>
 
-    <string name="signing_up">Cadastrando</string>
+    <string name="highlights">Destaques</string>
     <string name="login">Login</string>
     <string name="register">Cadastrar-se</string>
+    <string name="news">Notícias</string>
     <string name="signing_in">Logando</string>
+    <string name="signing_up">Cadastrando</string>
     <string name="share_title">Desafio Mesa</string>
     <string name="share_text">Experimente o app Desafio Mesa!</string>
     <string name="wait">Aguarde...</string>

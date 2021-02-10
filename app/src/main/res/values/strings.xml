@@ -23,10 +23,12 @@
     <string name="error_no_internet">No internet</string>
     <string name="error_password_empty">Password is empty</string>
 
-    <string name="signing_up">Signing Up</string>
+    <string name="highlights">Highlights</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="news">News</string>
     <string name="signing_in">Signing In</string>
+    <string name="signing_up">Signing Up</string>
     <string name="share_title">Desafio Mesa</string>
     <string name="share_text">Use the app Desafio Mesa!</string>
     <string name="wait">Wait...</string>
