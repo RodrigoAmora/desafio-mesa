@@ -16,16 +16,19 @@ import br.com.rodrigoamora.desario_mesa.model.News
 import br.com.rodrigoamora.desario_mesa.ui.news.adapter.NewsAdapter
 import br.com.rodrigoamora.desario_mesa.ui.news.details.DetailsNewsFragment
 import br.com.rodrigoamora.desario_mesa.ui.news.listener.OnItemListClickListener
+import br.com.rodrigoamora.desario_mesa.ui.news.presenter.HighlightsPresenter
+import br.com.rodrigoamora.desario_mesa.ui.news.presenter.NewsPresenter
 import br.com.rodrigoamora.desario_mesa.util.FragmentUtil
 import kotlinx.android.synthetic.main.fragment_news.*
-import java.util.Timer
-import java.util.TimerTask
+import java.util.*
 
 
 class NewsFragment : Fragment(), NewsContract.View {
 
-    lateinit var presenter : NewsPresenter
-    lateinit var recyclerView : RecyclerView
+    lateinit var highlightsPresenter: HighlightsPresenter
+    lateinit var newsPresenter : NewsPresenter
+    lateinit var recyclerViewHighlights : RecyclerView
+    lateinit var recyclerViewNews : RecyclerView
 
     lateinit var timer: Timer
     lateinit var timerTask: TimerTask
@@ -42,6 +45,7 @@ class NewsFragment : Fragment(), NewsContract.View {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        configureRecyclerViewOfHighlights()
         configureRecyclerViewOfNews()
         instantiatePresenter()
         initializeTimerTask()
@@ -64,13 +68,17 @@ class NewsFragment : Fragment(), NewsContract.View {
         Toast.makeText(activity!!.baseContext, message, Toast.LENGTH_LONG).show()
     }
 
-    override fun searchNews() {
-        presenter.searchNews()
+    override fun searchHighlights() {
+        highlightsPresenter.searchHighlights()
     }
 
-    override fun populateRecyclerView(newsList: List<News>?) {
+    override fun searchNews() {
+        newsPresenter.searchNews()
+    }
+
+    override fun populateRecyclerViewOfHighlights(newsList: List<News>?) {
         val adapter = NewsAdapter(activity!!.applicationContext, newsList)
-        recyclerView.adapter = adapter
+        recyclerViewHighlights.adapter = adapter
 
         adapter.itemClickListener(object : OnItemListClickListener<News> {
             override fun onItemClick(news: News) {
@@ -79,20 +87,47 @@ class NewsFragment : Fragment(), NewsContract.View {
         })
     }
 
+    override fun populateRecyclerViewOfNews(newsList: List<News>?) {
+        val adapter = NewsAdapter(activity!!.applicationContext, newsList)
+        recyclerViewNews.adapter = adapter
+
+        adapter.itemClickListener(object : OnItemListClickListener<News> {
+            override fun onItemClick(news: News) {
+                goToDetailsNewsFragment(news)
+            }
+        })
+    }
+
+    private fun configureRecyclerViewOfHighlights() {
+        val linearLayout = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false);
+        val dividerItemDecoration = DividerItemDecoration(activity, DividerItemDecoration.HORIZONTAL)
+        recyclerViewHighlights = list_highlights
+        recyclerViewHighlights.addItemDecoration(dividerItemDecoration)
+        recyclerViewHighlights.setHasFixedSize(true)
+        recyclerViewHighlights.setItemAnimator(DefaultItemAnimator())
+        recyclerViewHighlights.setLayoutManager(linearLayout)
+        recyclerViewHighlights.setNestedScrollingEnabled(false)
+    }
+
     private fun configureRecyclerViewOfNews() {
         val linearLayout = LinearLayoutManager(activity)
         val dividerItemDecoration = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
-        recyclerView = list_news
-        recyclerView.addItemDecoration(dividerItemDecoration)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.setItemAnimator(DefaultItemAnimator())
-        recyclerView.setLayoutManager(linearLayout)
-        recyclerView.setNestedScrollingEnabled(false)
+        recyclerViewNews = list_news
+        recyclerViewNews.addItemDecoration(dividerItemDecoration)
+        recyclerViewNews.setHasFixedSize(true)
+        recyclerViewNews.setItemAnimator(DefaultItemAnimator())
+        recyclerViewNews.setLayoutManager(linearLayout)
+        recyclerViewNews.setNestedScrollingEnabled(false)
     }
 
     private fun instantiatePresenter() {
-        presenter = NewsPresenter(activity!!.baseContext)
-        presenter.view = this
+        highlightsPresenter =
+            HighlightsPresenter(activity!!.baseContext)
+        highlightsPresenter.view = this
+
+        newsPresenter =
+            NewsPresenter(activity!!.baseContext)
+        newsPresenter.view = this
     }
 
     private fun goToDetailsNewsFragment(news: News) {
@@ -116,6 +151,7 @@ class NewsFragment : Fragment(), NewsContract.View {
             override fun run() {
                 //use a handler to run a toast that shows the current timestamp
                 handler.post(Runnable {
+                    searchHighlights()
                     searchNews()
                 })
             }

@@ -8,12 +8,15 @@ interface NewsContract {
         fun showProgressBar()
         fun hideProgressBar()
         fun showError(message: String)
+        fun searchHighlights()
         fun searchNews()
-        fun populateRecyclerView(newsList: List<News>?)
+        fun populateRecyclerViewOfHighlights(newsList: List<News>?)
+        fun populateRecyclerViewOfNews(newsList: List<News>?)
     }
 
     interface Presenter {
         fun populateRecyclerView()
+        fun searchHighlights()
         fun searchNews()
         fun showError()
     }

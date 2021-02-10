@@ -7,8 +7,10 @@ import retrofit2.http.HeaderMap
 
 interface NewsService {
 
-    //@Headers("Content-Type: application/json")
     @GET("v1/client/news")
     fun listNews(@HeaderMap headers: Map<String, String>) : Call<ListaNews>
+
+    @GET("v1/client/news/highlights")
+    fun listHighlights(@HeaderMap headers: Map<String, String>) : Call<ListaNews>
 
 }
