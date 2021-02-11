@@ -9,6 +9,7 @@ import br.com.rodrigoamora.desario_mesa.R
 import br.com.rodrigoamora.desario_mesa.model.News
 import br.com.rodrigoamora.desario_mesa.ui.news.listener.OnItemListClickListener
 import br.com.rodrigoamora.desario_mesa.ui.news.viewholder.NewsViewHolder
+import br.com.rodrigoamora.desario_mesa.util.ShareUtil
 import kotlinx.android.synthetic.main.adapter_news.view.*
 
 
@@ -22,11 +23,18 @@ class NewsAdapter(context: Context, newsList: List<News>?) : RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         holder.setValues(newsList!!.get(position))
+
         holder.itemView.lb_title.setOnClickListener ( object : View.OnClickListener {
             override fun onClick(v: View) {
                 listener?.onItemClick(newsList?.get(position)!!)
             }
         })
+        holder.itemView.iv_share.setOnClickListener {
+            val newsSelected = newsList!!.get(position)
+            val text  = newsSelected.title+" - "+newsSelected.url
+
+            ShareUtil.directShare(context, context.getString(R.string.menu_share), text)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
