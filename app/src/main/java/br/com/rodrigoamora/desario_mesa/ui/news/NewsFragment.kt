@@ -149,11 +149,10 @@ class NewsFragment : Fragment(), NewsContract.View {
 
         timerTask = object : TimerTask(){
             override fun run() {
-                //use a handler to run a toast that shows the current timestamp
-                handler.post(Runnable {
+                handler.post {
                     searchHighlights()
                     searchNews()
-                })
+                }
             }
         }
 
