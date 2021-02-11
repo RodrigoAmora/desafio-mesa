@@ -9,8 +9,13 @@ class ShareUtil {
         fun directShare(context: Context, title: String, text: String) {
             val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
             sharingIntent.type = "text/plain"
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, text)
-            context.startActivity(Intent.createChooser(sharingIntent, title))
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, title)
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, text)
+
+            val intent = Intent.createChooser(sharingIntent, title)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+            context.startActivity(intent)
         }
     }
 
