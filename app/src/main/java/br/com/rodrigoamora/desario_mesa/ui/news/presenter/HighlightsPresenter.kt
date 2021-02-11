@@ -13,7 +13,7 @@ import retrofit2.Call
 import javax.inject.Inject
 
 class HighlightsPresenter(context: Context) :
-    NewsContract.Presenter {
+    NewsContract.HighlightsPresenter {
 
     @Inject
     lateinit var service : NewsService
@@ -34,17 +34,6 @@ class HighlightsPresenter(context: Context) :
             view.showProgressBar()
 
             call = service.listHighlights(createHeaders())
-            call.enqueue(callback)
-        } else {
-            view.showError(context.getString(R.string.error_no_internet))
-        }
-    }
-
-    override fun searchNews() {
-        if (NetworkUtil.checkConnection(context)) {
-            view.showProgressBar()
-
-            call = service.listNews(createHeaders())
             call.enqueue(callback)
         } else {
             view.showError(context.getString(R.string.error_no_internet))

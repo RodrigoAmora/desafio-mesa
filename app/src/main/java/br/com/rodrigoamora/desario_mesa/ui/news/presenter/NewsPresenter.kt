@@ -13,7 +13,7 @@ import retrofit2.Call
 import javax.inject.Inject
 
 class NewsPresenter(context: Context) :
-    NewsContract.Presenter {
+    NewsContract.NewsPresenter {
 
     @Inject
     lateinit var service : NewsService
@@ -27,17 +27,6 @@ class NewsPresenter(context: Context) :
     init {
         callback = NewsCallback(this)
         injectComponents()
-    }
-
-    override fun searchHighlights() {
-        if (NetworkUtil.checkConnection(context)) {
-            view.showProgressBar()
-
-            call = service.listHighlights(createHeaders())
-            call.enqueue(callback)
-        } else {
-            view.showError(context.getString(R.string.error_no_internet))
-        }
     }
 
     override fun searchNews() {

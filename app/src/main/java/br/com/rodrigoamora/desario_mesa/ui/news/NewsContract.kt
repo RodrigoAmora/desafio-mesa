@@ -14,10 +14,15 @@ interface NewsContract {
         fun populateRecyclerViewOfNews(newsList: List<News>?)
     }
 
-    interface Presenter {
+    interface NewsPresenter {
+        fun populateRecyclerView()
+        fun searchNews()
+        fun showError()
+    }
+
+    interface HighlightsPresenter {
         fun populateRecyclerView()
         fun searchHighlights()
-        fun searchNews()
         fun showError()
     }
 
