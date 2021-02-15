@@ -8,7 +8,7 @@ class TokenDao {
     private val ACCESS_TOKEN = "access_token"
 
     private fun getSharedPreferences(context: Context): SharedPreferences {
-        return context.getSharedPreferences("desafio_token", Context.MODE_PRIVATE)
+        return context.getSharedPreferences("desafio_mesa", Context.MODE_PRIVATE)
     }
 
     fun deleteAccessToken(context: Context) {
