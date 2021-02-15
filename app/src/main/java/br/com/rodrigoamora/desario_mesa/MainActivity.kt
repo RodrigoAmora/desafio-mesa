@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import br.com.rodrigoamora.desario_mesa.dao.TokenDao
 import br.com.rodrigoamora.desario_mesa.ui.login.LoginActivity
 import br.com.rodrigoamora.desario_mesa.ui.news.NewsFragment
+import br.com.rodrigoamora.desario_mesa.ui.settings.SettingsFragment
 import br.com.rodrigoamora.desario_mesa.util.FragmentUtil
 import br.com.rodrigoamora.desario_mesa.util.ShareUtil
 import com.google.android.material.navigation.NavigationView
@@ -70,6 +71,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             ShareUtil.directShare(this,
                                     getString(R.string.share_title),
                                     getString(R.string.share_text))
+        }
+        if (item.itemId == R.id.nav_settings) {
+            changeFragment(SettingsFragment(), null, true)
         }
 
         drawer.closeDrawer(GravityCompat.START)

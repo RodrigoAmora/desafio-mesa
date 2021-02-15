@@ -24,6 +24,14 @@
     <string name="error_no_internet">Sem internet</string>
     <string name="error_password_empty">Senha vazia</string>
 
+    <string-array name="list_time">
+        <item>30 seconds</item>
+        <item>45 seconds</item>
+        <item>1 minute</item>
+        <item>3 minutes</item>
+        <item>5 minutes</item>
+    </string-array>
+
     <string name="communicate">Comunicar</string>
     <string name="highlights">Destaques</string>
     <string name="login">Login</string>
@@ -33,5 +41,6 @@
     <string name="signing_up">Cadastrando</string>
     <string name="share_title">Desafio Mesa</string>
     <string name="share_text">Experimente o app Desafio Mesa!</string>
+    <string name="time_to_refresh_news">Qual o tempo você deseja que o app atualliza as notícias?</string>
     <string name="wait">Aguarde...</string>
 </resources>
