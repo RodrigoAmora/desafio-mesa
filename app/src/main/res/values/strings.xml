@@ -23,6 +23,7 @@
     <string name="error_no_internet">No internet</string>
     <string name="error_password_empty">Password is empty</string>
 
+    <string name="communicate">Communicate</string>
     <string name="highlights">Highlights</string>
     <string name="login">Login</string>
     <string name="register">Register</string>

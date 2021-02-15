@@ -24,6 +24,7 @@
     <string name="error_no_internet">Sem internet</string>
     <string name="error_password_empty">Senha vazia</string>
 
+    <string name="communicate">Comunicar</string>
     <string name="highlights">Destaques</string>
     <string name="login">Login</string>
     <string name="register">Cadastrar-se</string>
