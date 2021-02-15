@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigoamora.desario_mesa.R
+import br.com.rodrigoamora.desario_mesa.dao.SettingsDao
 import br.com.rodrigoamora.desario_mesa.model.News
 import br.com.rodrigoamora.desario_mesa.ui.news.adapter.NewsAdapter
 import br.com.rodrigoamora.desario_mesa.ui.news.details.DetailsNewsFragment
@@ -156,7 +157,7 @@ class NewsFragment : Fragment(), NewsContract.View {
             }
         }
 
-        timer.schedule(timerTask, 1000, 30000)
+        timer.schedule(timerTask, 1000, SettingsDao.getTimeToRefreshNews(activity?.baseContext!!))
     }
 
 }
