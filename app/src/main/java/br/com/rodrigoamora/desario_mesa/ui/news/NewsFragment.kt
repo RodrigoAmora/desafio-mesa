@@ -157,7 +157,11 @@ class NewsFragment : Fragment(), NewsContract.View {
             }
         }
 
-        timer.schedule(timerTask, 1000, SettingsDao.getTimeToRefreshNews(activity?.baseContext!!))
+        val delay: Long = 1000
+        val timeToRefresh = SettingsDao.getTimeToRefreshNews(activity?.baseContext!!)
+        timer.schedule(timerTask,
+                        delay,
+                        timeToRefresh)
     }
 
 }
