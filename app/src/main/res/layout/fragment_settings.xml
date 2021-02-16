@@ -8,7 +8,8 @@
 
     <TextView
         android:id="@+id/lb_time_to_refresh_news"
-        android:hint="@string/time_to_refresh_news"
+        android:text="@string/time_to_refresh_news"
+        android:textColor="@android:color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
