@@ -10,6 +10,8 @@
     <dimen name="margin_bottom_adapter">5dp</dimen>
     <dimen name="margin_end">32dp</dimen>
     <dimen name="margin_start">32dp</dimen>
+    <dimen name="margin_left">7dp</dimen>
+    <dimen name="margin_right">7dp</dimen>
     <dimen name="margin_top">16dp</dimen>
     <dimen name="margin_top_adapter">5dp</dimen>
 
