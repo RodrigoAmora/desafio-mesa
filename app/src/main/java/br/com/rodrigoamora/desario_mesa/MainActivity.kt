@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         if (id == R.id.action_exit) {
             val tokenDao = TokenDao()
-            tokenDao.deleteAccessToken(this)
+            TokenDao.deleteAccessToken(this)
             startActivity(Intent(this, LoginActivity::class.java))
         }
 
