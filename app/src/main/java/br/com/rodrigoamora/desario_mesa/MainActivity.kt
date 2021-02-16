@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import br.com.rodrigoamora.desario_mesa.dao.TokenDao
+import br.com.rodrigoamora.desario_mesa.ui.about.AboutFragment
 import br.com.rodrigoamora.desario_mesa.ui.login.LoginActivity
 import br.com.rodrigoamora.desario_mesa.ui.news.NewsFragment
 import br.com.rodrigoamora.desario_mesa.ui.settings.SettingsFragment
@@ -55,7 +56,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val id = item.itemId
 
         if (id == R.id.action_exit) {
-            val tokenDao = TokenDao()
             TokenDao.deleteAccessToken(this)
             startActivity(Intent(this, LoginActivity::class.java))
         }
@@ -74,6 +74,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         if (item.itemId == R.id.nav_settings) {
             changeFragment(SettingsFragment(), null, true)
+        }
+        if (item.itemId == R.id.nav_about) {
+            changeFragment(AboutFragment(), null, true)
         }
 
         drawer.closeDrawer(GravityCompat.START)

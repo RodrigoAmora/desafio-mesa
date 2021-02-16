@@ -8,6 +8,7 @@
     <string name="action_settings">Configurações</string>
     <string name="action_exit">Sair</string>
 
+    <string name="menu_about">Sobre</string>
     <string name="menu_news">Notícias</string>
     <string name="menu_share">Compartilhar</string>
 
@@ -32,6 +33,7 @@
         <item>5 minutes</item>
     </string-array>
 
+    <string name="created_by_rodrigo_amora">Criado por Rodrigo Amora</string>
     <string name="communicate">Comunicar</string>
     <string name="highlights">Destaques</string>
     <string name="login">Login</string>
@@ -43,4 +45,5 @@
     <string name="share_text">Experimente o app Desafio Mesa!</string>
     <string name="time_to_refresh_news">Qual o tempo você deseja que o app atualliza as notícias?</string>
     <string name="wait">Aguarde...</string>
+    <string name="version">Versão:</string>
 </resources>
