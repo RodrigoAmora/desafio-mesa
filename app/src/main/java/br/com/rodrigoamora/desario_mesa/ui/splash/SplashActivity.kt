@@ -12,19 +12,17 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_splash)
+        changeActivity()
+    }
 
+    private fun checkToken(): String? {
+        return TokenDao.getAccessToken(this)
+    }
+
+    private fun changeActivity() {
         val token = checkToken()
-        changeActivity(token)
-    }
 
-    private fun checkToken() : String ? {
-        val tokenDao = TokenDao();
-        return tokenDao.getAccessToken(this)
-    }
-
-    private fun changeActivity(token : String?) {
         val intent  = if (token.isNullOrEmpty()) {
             Intent(this, LoginActivity::class.java)
         } else {
