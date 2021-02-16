@@ -16,10 +16,8 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener, SignupContract
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-
         instantiatePresenter()
         inflateLayoutComponents()
-
     }
 
     override fun onClick(view: View?) {

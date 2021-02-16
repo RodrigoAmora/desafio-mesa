@@ -49,9 +49,8 @@ class LoginPresenter(context: Context) : LoginContract.Presenter {
 
     override fun goToMainActivity() {
         if (callback.token != null) {
-            var tokenDao = TokenDao()
             var token :Token = callback.token!!
-            tokenDao.saveAccessToken(context, token.token)
+            TokenDao.saveAccessToken(context, token.token)
             view.goToMainActivity()
         } else {
             view.showError(context.getString(R.string.error_login))

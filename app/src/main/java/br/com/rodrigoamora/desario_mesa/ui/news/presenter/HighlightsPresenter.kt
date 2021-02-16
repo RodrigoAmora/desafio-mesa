@@ -57,7 +57,7 @@ class HighlightsPresenter(context: Context) :
     }
 
     private fun createHeaders(): HashMap<String, String> {
-        val token = "Bearer " + TokenDao().getAccessToken(context)
+        val token = "Bearer " + TokenDao.getAccessToken(context)
 
         var headers = HashMap<String, String>()
         headers["Content-Type"] = "application/json"
