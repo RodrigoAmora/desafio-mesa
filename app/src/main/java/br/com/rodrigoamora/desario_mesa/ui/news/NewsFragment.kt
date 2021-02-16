@@ -21,7 +21,8 @@ import br.com.rodrigoamora.desario_mesa.ui.news.presenter.HighlightsPresenter
 import br.com.rodrigoamora.desario_mesa.ui.news.presenter.NewsPresenter
 import br.com.rodrigoamora.desario_mesa.util.FragmentUtil
 import kotlinx.android.synthetic.main.fragment_news.*
-import java.util.*
+import java.util.Timer
+import java.util.TimerTask
 
 
 class NewsFragment : Fragment(), NewsContract.View {
