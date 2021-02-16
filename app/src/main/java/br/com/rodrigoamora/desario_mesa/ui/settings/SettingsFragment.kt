@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import br.com.rodrigoamora.desario_mesa.R
 import br.com.rodrigoamora.desario_mesa.dao.SettingsDao
@@ -28,7 +27,7 @@ class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
         intiViews()
     }
 
-    override fun onNothingSelected(p0: AdapterView<*>?) {}
+    override fun onNothingSelected(adapterView: AdapterView<*>?) {}
 
     override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val time: Long = if (position == 0) {
@@ -50,9 +49,7 @@ class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
         val listTime = resources.getStringArray(R.array.list_time)
         val arrayAdapter = context?.let { ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, listTime) }
         val spTime = sp_time_to_refresh_news
-        if (arrayAdapter != null) {
-            spTime?.adapter = arrayAdapter
-        }
+        spTime?.adapter = arrayAdapter
         spTime.setOnItemSelectedListener(this)
     }
 
