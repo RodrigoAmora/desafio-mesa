@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import br.com.rodrigoamora.desario_mesa.dao.TokenDao
 import br.com.rodrigoamora.desario_mesa.ui.about.AboutFragment
 import br.com.rodrigoamora.desario_mesa.ui.login.LoginActivity
-import br.com.rodrigoamora.desario_mesa.ui.news.NewsFragment
+import br.com.rodrigoamora.desario_mesa.ui.news.ListNewsFragment
 import br.com.rodrigoamora.desario_mesa.ui.settings.SettingsFragment
 import br.com.rodrigoamora.desario_mesa.util.FragmentUtil
 import br.com.rodrigoamora.desario_mesa.util.ShareUtil
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
 
         createToolbarAndNavigationView()
-        changeFragment(NewsFragment(), null, false)
+        changeFragment(ListNewsFragment(), null, false)
     }
 
     override fun onBackPressed() {
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.nav_news) {
-            changeFragment(NewsFragment(), null, true)
+            changeFragment(ListNewsFragment(), null, true)
         }
         if (item.itemId == R.id.nav_share) {
             ShareUtil.directShare(this,

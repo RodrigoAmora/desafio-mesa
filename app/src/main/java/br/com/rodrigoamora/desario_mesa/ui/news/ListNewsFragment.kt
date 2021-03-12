@@ -25,7 +25,7 @@ import java.util.Timer
 import java.util.TimerTask
 
 
-class NewsFragment : Fragment(), NewsContract.View {
+class ListNewsFragment : Fragment(), NewsContract.View {
 
     lateinit var highlightsPresenter: HighlightsPresenter
     lateinit var newsPresenter : NewsPresenter
